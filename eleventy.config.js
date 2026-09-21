@@ -2,8 +2,10 @@ import pkg from "js-beautify";
 const beautifyHtml = pkg.html;
 
 export default function(eleventyConfig) {
-    // Passthrough Copies
-    eleventyConfig.addPassthroughCopy({"src/assets": "assets"});
+    // Passthrough for assets
+    eleventyConfig.addPassthroughCopy({"src/assets" : "assets"});
+    // Passthrough and sorting for component.js files
+    eleventyConfig.addPassthroughCopy({"src/_includes/components/**/*.js" : "assets/js/components"});
 
     // JS-Beautify Indentation
     eleventyConfig.addTransform("beautify", function(content) {
