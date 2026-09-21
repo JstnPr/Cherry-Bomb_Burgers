@@ -1,0 +1,106 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+p {
+  text-wrap: pretty;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+ol,
+ul {
+  list-style: none;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+:root {
+  --step--2: clamp(0.6944rem, 0.7045rem, 0.7035rem);
+  --step--1: clamp(0.8333rem, 0.9485rem, 0.9377rem);
+  --step-0: clamp(1rem, 1.2758rem, 1.25rem);
+  --step-1: clamp(1.2rem, 1.7145rem, 1.6663rem);
+  --step-2: clamp(1.44rem, 2.3019rem, 2.2211rem);
+  --step-3: clamp(1.728rem, 3.0882rem, 2.9607rem);
+  --step-4: clamp(2.0736rem, 4.1404rem, 3.9467rem);
+  --step-5: clamp(2.4883rem, 5.5478rem, 5.2609rem);
+  --step-6: clamp(2.986rem, 7.4293rem, 7.0128rem);
+  --space-3xs: clamp(0.25rem, 0.319rem, 0.3125rem);
+  --space-2xs: clamp(0.5rem, 0.6379rem, 0.625rem);
+  --space-xs: clamp(0.75rem, 0.9569rem, 0.9375rem);
+  --space-s: clamp(1rem, 1.2758rem, 1.25rem);
+  --space-m: clamp(1.5rem, 1.9138rem, 1.875rem);
+  --space-l: clamp(2rem, 2.5518rem, 2.5rem);
+  --space-xl: clamp(3rem, 3.8276rem, 3.75rem);
+  --space-2xl: clamp(4rem, 5.1034rem, 5rem);
+  --space-3xl: clamp(6rem, 7.6552rem, 7.5rem);
+  --space-3xs-2xs: clamp(0.25rem, 0.6638rem, 0.625rem);
+  --space-2xs-xs: clamp(0.5rem, 0.9827rem, 0.9375rem);
+  --space-xs-s: clamp(0.75rem, 1.3018rem, 1.25rem);
+  --space-s-m: clamp(1rem, 1.9655rem, 1.875rem);
+  --space-m-l: clamp(1.5rem, 2.6034rem, 2.5rem);
+  --space-l-xl: clamp(2rem, 3.931rem, 3.75rem);
+  --space-xl-2xl: clamp(3rem, 5.2069rem, 5rem);
+  --space-2xl-3xl: clamp(4rem, 7.8621rem, 7.5rem);
+  --space-s-l: clamp(1rem, 2.6552rem, 2.5rem);
+  --grid-max-width: 92.5rem;
+  --grid-gutter: var(--space-s-l, clamp(1rem, 2.6552rem, 2.5rem));
+  --grid-columns: 12;
+}
+.u-container {
+  max-width: var(--grid-max-width);
+  padding-inline: var(--grid-gutter);
+  margin-inline: auto;
+}
+.u-grid {
+  display: grid;
+  gap: var(--grid-gutter);
+}
