@@ -92,7 +92,7 @@ select {
   --space-2xl-3xl: clamp(4rem, 7.8621rem, 7.5rem);
   --space-s-l: clamp(1rem, 2.6552rem, 2.5rem);
   --grid-max-width: 92.5rem;
-  --grid-gutter: var(--space-s-l, clamp(1rem, 2.6552rem, 2.5rem));
+  --grid-gutter: var(--space-s-m, clamp(1rem, 2.6552rem, 2.5rem));
   --grid-columns: 12;
   --touch-target: 44px;
 }
@@ -113,6 +113,10 @@ header .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: var(--grid-gutter);
+}
+header .header-inner .logo-svg {
+  height: var(--step-3);
 }
 header .header-inner nav ul {
   display: none;
