@@ -94,6 +94,7 @@ select {
   --grid-max-width: 92.5rem;
   --grid-gutter: var(--space-s-l, clamp(1rem, 2.6552rem, 2.5rem));
   --grid-columns: 12;
+  --touch-target: 44px;
 }
 .u-container {
   max-width: var(--grid-max-width);
@@ -104,9 +105,54 @@ select {
   display: grid;
   gap: var(--grid-gutter);
 }
+header {
+  position: sticky;
+  top: 0;
+}
 header .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: sticky;
+}
+header .header-inner nav ul {
+  display: none;
+  gap: var(--space-l);
+}
+header .header-inner .header-util {
+  display: flex;
+  align-items: center;
+}
+header .header-inner .header-util .cta {
+  display: none;
+}
+header .header-inner .header-util .nav-toggle {
+  width: var(--touch-target);
+  height: var(--touch-target);
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: 0;
+  cursor: pointer;
+}
+@media (width > 768px) {
+  header .header-inner .header-util .nav-toggle {
+    display: none;
+  }
+}
+header .header-inner .header-util .nav-toggle svg {
+  grid-area: 1 / 1;
+  transition: opacity 0.25s cubic-bezier(0.65, 0, 0.35, 1), transform 0.25s cubic-bezier(0.65, 0, 0.35, 1);
+  will-change: transform, opacity;
+}
+header .header-inner .header-util .nav-toggle .nav-toggle-close {
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+header .header-inner .header-util .nav-toggle[aria-expanded=true] .nav-toggle-close {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+header .header-inner .header-util .nav-toggle[aria-expanded=true] .nav-toggle-open {
+  opacity: 0;
+  transform: rotate(90deg);
 }
