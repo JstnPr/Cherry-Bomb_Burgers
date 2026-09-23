@@ -95,6 +95,12 @@ select {
   --grid-gutter: var(--space-s-m, clamp(1rem, 2.6552rem, 2.5rem));
   --grid-columns: 12;
   --touch-target: 44px;
+  --primary-color: #e0001a;
+  --secondary-color: #a30013;
+  --accent-color: #ffb71c;
+  --off-white: #fff6ea;
+  --off-black: #212120;
+  --light-off-black: #3c3c3c;
 }
 .u-container {
   max-width: var(--grid-max-width);
@@ -117,6 +123,7 @@ header .header-inner {
 }
 header .header-inner .logo-svg {
   height: var(--step-3);
+  fill: var(--primary-color);
 }
 header .header-inner nav ul {
   display: none;
@@ -145,6 +152,7 @@ header .header-inner .header-util .nav-toggle {
 }
 header .header-inner .header-util .nav-toggle svg {
   grid-area: 1 / 1;
+  stroke: var(--off-black);
   transition: opacity 0.25s cubic-bezier(0.65, 0, 0.35, 1), transform 0.25s cubic-bezier(0.65, 0, 0.35, 1);
   will-change: transform, opacity;
 }
