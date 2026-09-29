@@ -130,7 +130,8 @@ body:has(.nav-toggle[aria-expanded=true]) .anim-fadeup {
 }
 #nav-main {
   inset: 0;
-  padding: var(--header-height) 0;
+  padding-top: var(--header-height);
+  padding-bottom: var(--space-m-l);
   visibility: hidden;
   display: flex;
   flex-direction: column;
