@@ -16,13 +16,6 @@ navToggle.addEventListener('click', () => {
     navToggle.focus();
 })
 
-// Exit on Mobile Breakpoint
-window.matchMedia('(width > 768px)').addEventListener('change', () => {
-    if (navToggle.getAttribute('aria-expanded') === 'true') {
-        navToggle.click();
-    }
-})
-
 // Exit on Link Click
 navMenu.addEventListener('click', (e) => {
     if (e.target.closest('a')) navToggle.click();
