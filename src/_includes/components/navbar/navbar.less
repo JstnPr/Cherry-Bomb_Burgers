@@ -1,2 +1,199 @@
 // out: false, main: ../../less/main.less
 
+// Disable scrolling on nav-menu open
+&:has(.nav-toggle[aria-expanded=true]) { overflow: hidden; }
+
+// Tab Focus Color
+*:focus-visible {
+    outline: 2px var(--accent-color) solid;
+    outline-offset: 5px;
+}
+
+// Full-Screen Navigation
+#nav-main {
+    // Box Model
+    inset: 0;
+    padding-top: var(--header-height);
+    padding-bottom: var(--space-m-l);
+    // Display
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-l);
+    // Position
+    z-index: 90;
+    position: fixed;
+    // Behavior
+    transition: visibility 0s var(--anim-cubic) 0.8s;
+    
+    // Expansion Opening Styles
+    &:before {
+        // Box Model
+        width: 300vmax;
+        height: 300vmax;
+        content: '';
+        // Position
+        position: absolute;
+        // Centers on the nav-toggle button; JS keeps these in sync with its real position
+        top: var(--nav-origin-y, calc(var(--grid-gutter) + (var(--touch-target) / 2)));
+        left: var(--nav-origin-x, calc(100% - var(--grid-gutter) - (var(--touch-target) / 2)));
+        // Styling
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        // Behavior
+        transform: translate(-50%, -50%) scale(0);
+        transition: 0.8s var(--anim-cubic);
+        will-change: transform;
+    }
+
+    ul {
+        // Display
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-s);
+    }
+
+    a {
+        // Typography
+        color: var(--off-white);
+        font: bold var(--step-2) sans-serif;
+        text-decoration: none;
+        // Behavior
+        transition: color .25s ease;
+
+        &:hover, &:active, &:focus-visible { color: var(--accent-color); }
+    }
+
+    .nav-main-utils {
+        // Display
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-xs);
+
+        a { font-size: var(--step-0); }
+
+        .nav-socials {
+            // Display
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: var(--space-2xs);
+
+            a {
+                // Box Model
+                width: var(--touch-target-sm);
+                height: var(--touch-target-sm);
+                // Display
+                display: grid;
+                place-items: center;
+                // Styling
+                border-radius: 50%;
+            }
+        }
+    }
+    &.is-open {
+        // Display
+        visibility: visible;
+        // Behavior
+        transition-delay: 0s;
+
+        &::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        ul li {
+            &:nth-child(1) { transition-delay: .44s; }
+            &:nth-child(2) { transition-delay: .52s; }
+            &:nth-child(3) { transition-delay: .60s; }
+            &:nth-child(4) { transition-delay: .68s; }
+            &:nth-child(5) { transition-delay: .76s; }
+        }
+        .nav-main-utils {
+            transition-delay: .88s;
+            .nav-socials { transition-delay: .96s; }
+        }
+    }
+}
+
+header {
+    // Box Model
+    padding-block: var(--header-padding);
+    // Position
+    z-index: 100;
+    position: sticky;
+    top: 0;
+
+    .header-inner {
+        // Display
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .logo-svg {
+            // Box Model
+            height: var(--step-6);
+            // Styling
+            fill: var(--primary-color);
+            // Behavior
+            transition: .25s ease;
+
+            @media (width > 768px) {
+                height: var(--step-4);
+            }
+        }
+        &:has(.nav-toggle[aria-expanded=true]) .logo-svg {
+            fill: var(--accent-color);
+            transition-delay: .35s;
+        }
+
+        .header-util {
+            // Display
+            display: flex;
+            align-items: center;
+
+            .cta { display: none; }
+            
+            .nav-toggle {
+                // Box Model
+                width: var(--touch-target);
+                height: var(--touch-target);
+                // Display
+                display: grid;
+                place-items: center;
+                // Styling
+                border: 0;
+                border-radius: 50%;
+                background-color: var(--primary-color);
+                // Behavior
+                cursor: pointer;
+
+                svg {
+                    // Display
+                    grid-area: 1 / 1;
+                    // Styling
+                    stroke: var(--off-white);
+                    // Behavior
+                    transition:
+                        opacity 0.25s cubic-bezier(0.65, 0, 0.35, 1),
+                        transform 0.25s cubic-bezier(0.65, 0, 0.35, 1);
+                    will-change: transform, opacity;
+                }
+                // Animations
+                .nav-toggle-close {
+                    opacity: 0;
+                    transform: rotate(-90deg);
+                }
+                &[aria-expanded=true] .nav-toggle-close {
+                    opacity: 1;
+                    transform: rotate(0deg);
+                }
+                &[aria-expanded=true] .nav-toggle-open {
+                    opacity: 0;
+                    transform: rotate(90deg);
+                }
+            }
+        }
+    }
+}

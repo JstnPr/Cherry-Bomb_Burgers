@@ -6,9 +6,10 @@
       <meta name="description" content="{{ description | default: site.description }}">
       <title>Boilerplate</title>
       <!-- Links -->
-      <link rel="stylesheet" href="assets/css/main.css">
-      <script src="assets/js/main.js" defer></script>
+      <link rel="stylesheet" href="/assets/css/main.css">
+      <script type="module" src="/assets/js/main.js" defer></script>
    </head>
    <body>
+      {% include "components/navbar/navbar.html" %}
    </body>
 </html>

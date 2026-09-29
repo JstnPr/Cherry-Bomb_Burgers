@@ -2,44 +2,64 @@
 
 :root {
     // Type scale
-    --step--2: clamp(0.6944rem, 0.692rem + 0.0125vw, 0.7035rem);
-    --step--1: clamp(0.8333rem, 0.8045rem + 0.144vw, 0.9377rem);
-    --step-0: clamp(1rem, 0.931rem + 0.3448vw, 1.25rem);
-    --step-1: clamp(1.2rem, 1.0714rem + 0.6431vw, 1.6663rem);
-    --step-2: clamp(1.44rem, 1.2245rem + 1.0774vw, 2.2211rem);
-    --step-3: clamp(1.728rem, 1.3879rem + 1.7003vw, 2.9607rem);
-    --step-4: clamp(2.0736rem, 1.5569rem + 2.5835vw, 3.9467rem);
-    --step-5: clamp(2.4883rem, 1.7235rem + 3.8243vw, 5.2609rem);
-    --step-6: clamp(2.986rem, 1.8751rem + 5.5542vw, 7.0128rem);
+    --step--2: ~"clamp(0.6944rem, 0.692rem + 0.0125vw, 0.7035rem)";
+    --step--1: ~"clamp(0.8333rem, 0.8045rem + 0.144vw, 0.9377rem)";
+    --step-0: ~"clamp(1rem, 0.931rem + 0.3448vw, 1.25rem)";
+    --step-1: ~"clamp(1.2rem, 1.0714rem + 0.6431vw, 1.6663rem)";
+    --step-2: ~"clamp(1.44rem, 1.2245rem + 1.0774vw, 2.2211rem)";
+    --step-3: ~"clamp(1.728rem, 1.3879rem + 1.7003vw, 2.9607rem)";
+    --step-4: ~"clamp(2.0736rem, 1.5569rem + 2.5835vw, 3.9467rem)";
+    --step-5: ~"clamp(2.4883rem, 1.7235rem + 3.8243vw, 5.2609rem)";
+    --step-6: ~"clamp(2.986rem, 1.8751rem + 5.5542vw, 7.0128rem)";
 
     // Spacing scale
-    --space-3xs: clamp(0.25rem, 0.2328rem + 0.0862vw, 0.3125rem);
-    --space-2xs: clamp(0.5rem, 0.4655rem + 0.1724vw, 0.625rem);
-    --space-xs: clamp(0.75rem, 0.6983rem + 0.2586vw, 0.9375rem);
-    --space-s: clamp(1rem, 0.931rem + 0.3448vw, 1.25rem);
-    --space-m: clamp(1.5rem, 1.3966rem + 0.5172vw, 1.875rem);
-    --space-l: clamp(2rem, 1.8621rem + 0.6897vw, 2.5rem);
-    --space-xl: clamp(3rem, 2.7931rem + 1.0345vw, 3.75rem);
-    --space-2xl: clamp(4rem, 3.7241rem + 1.3793vw, 5rem);
-    --space-3xl: clamp(6rem, 5.5862rem + 2.069vw, 7.5rem);
+    --space-3xs: ~"clamp(0.25rem, 0.2328rem + 0.0862vw, 0.3125rem)";
+    --space-2xs: ~"clamp(0.5rem, 0.4655rem + 0.1724vw, 0.625rem)";
+    --space-xs: ~"clamp(0.75rem, 0.6983rem + 0.2586vw, 0.9375rem)";
+    --space-s: ~"clamp(1rem, 0.931rem + 0.3448vw, 1.25rem)";
+    --space-m: ~"clamp(1.5rem, 1.3966rem + 0.5172vw, 1.875rem)";
+    --space-l: ~"clamp(2rem, 1.8621rem + 0.6897vw, 2.5rem)";
+    --space-xl: ~"clamp(3rem, 2.7931rem + 1.0345vw, 3.75rem)";
+    --space-2xl: ~"clamp(4rem, 3.7241rem + 1.3793vw, 5rem)";
+    --space-3xl: ~"clamp(6rem, 5.5862rem + 2.069vw, 7.5rem)";
 
         // One-up pairs
-        --space-3xs-2xs: clamp(0.25rem, 0.1466rem + 0.5172vw, 0.625rem);
-        --space-2xs-xs: clamp(0.5rem, 0.3793rem + 0.6034vw, 0.9375rem);
-        --space-xs-s: clamp(0.75rem, 0.6121rem + 0.6897vw, 1.25rem);
-        --space-s-m: clamp(1rem, 0.7586rem + 1.2069vw, 1.875rem);
-        --space-m-l: clamp(1.5rem, 1.2241rem + 1.3793vw, 2.5rem);
-        --space-l-xl: clamp(2rem, 1.5172rem + 2.4138vw, 3.75rem);
-        --space-xl-2xl: clamp(3rem, 2.4483rem + 2.7586vw, 5rem);
-        --space-2xl-3xl: clamp(4rem, 3.0345rem + 4.8276vw, 7.5rem);
+        --space-3xs-2xs: ~"clamp(0.25rem, 0.1466rem + 0.5172vw, 0.625rem)";
+        --space-2xs-xs: ~"clamp(0.5rem, 0.3793rem + 0.6034vw, 0.9375rem)";
+        --space-xs-s: ~"clamp(0.75rem, 0.6121rem + 0.6897vw, 1.25rem)";
+        --space-s-m: ~"clamp(1rem, 0.7586rem + 1.2069vw, 1.875rem)";
+        --space-m-l: ~"clamp(1.5rem, 1.2241rem + 1.3793vw, 2.5rem)";
+        --space-l-xl: ~"clamp(2rem, 1.5172rem + 2.4138vw, 3.75rem)";
+        --space-xl-2xl: ~"clamp(3rem, 2.4483rem + 2.7586vw, 5rem)";
+        --space-2xl-3xl: ~"clamp(4rem, 3.0345rem + 4.8276vw, 7.5rem)";
 
         // Custom pairs
-        --space-s-l: clamp(1rem, 0.5862rem + 2.069vw, 2.5rem);
+        --space-s-l: ~"clamp(1rem, 0.5862rem + 2.069vw, 2.5rem)";
     
     // Grid scale
     --grid-max-width: 92.50rem;
-    --grid-gutter: var(--space-s-l, clamp(1rem, 0.5862rem + 2.069vw, 2.5rem));
+    --grid-gutter: var(--space-m-l, ~"clamp(1rem, 0.5862rem + 2.069vw, 2.5rem)");
     --grid-columns: 12;
+
+    // Utility Scales
+    --touch-target: 44px;
+    --touch-target-sm: 32px;
+
+    // Header Scales
+    --header-padding: var(--grid-gutter);
+    --header-content-height: max(var(--step-3), var(--touch-target));
+    --header-height: calc((var(--header-padding) * 2) + var(--header-content-height));
+
+    // Color Palette
+    --primary-color: #a30013;
+    --secondary-color:#e0001a;
+    --accent-color:#ffb71c;
+    --off-white:#fff6ea;
+    --off-black:#212120;
+    --light-off-black:#3c3c3c;
+
+    // Animation Variables
+    --anim-cubic: cubic-bezier(0.65, 0, 0.35, 1);
 }
 // Grid utilities
 .u-container {
@@ -50,4 +70,17 @@
 .u-grid {
   display: grid;
   gap: var(--grid-gutter);
+}
+
+// Animation Presets
+.anim-fadeup {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: .25s ease;
+}
+body:has(.nav-toggle[aria-expanded=true]) {
+  .anim-fadeup {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
