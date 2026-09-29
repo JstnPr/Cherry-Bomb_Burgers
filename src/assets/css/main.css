@@ -147,11 +147,11 @@ body:has(.nav-toggle[aria-expanded=true]) .anim-fadeup {
   height: 300vmax;
   content: '';
   position: absolute;
-  top: calc(var(--grid-gutter) + (var(--touch-target) / 2));
-  right: calc(var(--grid-gutter) + (var(--touch-target) / 2));
+  top: var(--nav-origin-y, calc(var(--grid-gutter) + (var(--touch-target) / 2)));
+  left: var(--nav-origin-x, calc(100% - var(--grid-gutter) - (var(--touch-target) / 2)));
   border-radius: 50%;
   background-color: var(--primary-color);
-  transform: translate(50%, -50%) scale(0);
+  transform: translate(-50%, -50%) scale(0);
   transition: 0.8s var(--anim-cubic);
   will-change: transform;
 }
@@ -197,7 +197,7 @@ body:has(.nav-toggle[aria-expanded=true]) .anim-fadeup {
   transition-delay: 0s;
 }
 #nav-main.is-open::before {
-  transform: translate(50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(1);
 }
 #nav-main.is-open ul li:nth-child(1) {
   transition-delay: 0.44s;
@@ -236,6 +236,11 @@ header .header-inner .logo-svg {
   fill: var(--primary-color);
   transition: 0.25s ease;
 }
+@media (width > 768px) {
+  header .header-inner .logo-svg {
+    height: var(--step-4);
+  }
+}
 header .header-inner:has(.nav-toggle[aria-expanded=true]) .logo-svg {
   fill: var(--accent-color);
   transition-delay: 0.25s;
@@ -256,11 +261,6 @@ header .header-inner .header-util .nav-toggle {
   border-radius: 50%;
   background-color: var(--primary-color);
   cursor: pointer;
-}
-@media (width > 768px) {
-  header .header-inner .header-util .nav-toggle {
-    display: none;
-  }
 }
 header .header-inner .header-util .nav-toggle svg {
   grid-area: 1 / 1;

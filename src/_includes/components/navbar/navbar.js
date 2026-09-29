@@ -55,3 +55,19 @@ document.addEventListener('keydown', (e) => {
         navToggle.focus();
     }
 })
+
+// navMenu Position Updater
+const updateNavOrigin = () => {
+    const bounds = navToggle.getBoundingClientRect();
+
+    navMenu.style.setProperty(
+        '--nav-origin-x',
+        `${bounds.left + bounds.width / 2}px`
+    );
+    navMenu.style.setProperty(
+        '--nav-origin-y',
+        `${bounds.top + bounds.height / 2}px`
+    );
+};
+updateNavOrigin();
+window.addEventListener('resize', updateNavOrigin);
