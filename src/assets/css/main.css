@@ -95,12 +95,17 @@ select {
   --grid-gutter: var(--space-s-m, clamp(1rem, 2.6552rem, 2.5rem));
   --grid-columns: 12;
   --touch-target: 44px;
-  --primary-color: #e0001a;
-  --secondary-color: #a30013;
+  --touch-target-sm: 32px;
+  --header-padding: var(--grid-gutter);
+  --header-content-height: max(var(--step-3), var(--touch-target));
+  --header-height: calc((var(--header-padding) * 2) + var(--header-content-height));
+  --primary-color: #a30013;
+  --secondary-color: #e0001a;
   --accent-color: #ffb71c;
   --off-white: #fff6ea;
   --off-black: #212120;
   --light-off-black: #3c3c3c;
+  --anim-cubic: cubic-bezier(0.65, 0, 0.35, 1);
 }
 .u-container {
   max-width: var(--grid-max-width);
@@ -111,7 +116,112 @@ select {
   display: grid;
   gap: var(--grid-gutter);
 }
+.anim-fadeup {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.25s ease;
+}
+body:has(.nav-toggle[aria-expanded=true]) .anim-fadeup {
+  opacity: 1;
+  transform: translateY(0);
+}
+:has(.nav-toggle[aria-expanded=true]) {
+  overflow: hidden;
+}
+#nav-main {
+  inset: 0;
+  padding: var(--header-height) 0;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-l);
+  z-index: 90;
+  position: fixed;
+  transition: visibility 0s var(--anim-cubic) 0.8s;
+}
+#nav-main:before {
+  width: 300vmax;
+  height: 300vmax;
+  content: '';
+  position: absolute;
+  top: calc(var(--grid-gutter) + (var(--touch-target) / 2));
+  right: calc(var(--grid-gutter) + (var(--touch-target) / 2));
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  transform: translate(50%, -50%) scale(0);
+  transition: 0.8s var(--anim-cubic);
+  will-change: transform;
+}
+#nav-main ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+#nav-main a {
+  color: var(--off-white);
+  font: bold var(--step-1) sans-serif;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+#nav-main a:hover,
+#nav-main a:active,
+#nav-main a:focus-visible {
+  color: var(--accent-color);
+}
+#nav-main .nav-main-utils {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+#nav-main .nav-main-utils a {
+  font-size: var(--step-0);
+}
+#nav-main .nav-main-utils .nav-socials {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-xs);
+}
+#nav-main .nav-main-utils .nav-socials a {
+  width: var(--touch-target-sm);
+  height: var(--touch-target-sm);
+  display: grid;
+  place-items: center;
+}
+#nav-main.is-open {
+  visibility: visible;
+  transition-delay: 0s;
+}
+#nav-main.is-open::before {
+  transform: translate(50%, -50%) scale(1);
+}
+#nav-main.is-open ul li:nth-child(1) {
+  transition-delay: 0.44s;
+}
+#nav-main.is-open ul li:nth-child(2) {
+  transition-delay: 0.52s;
+}
+#nav-main.is-open ul li:nth-child(3) {
+  transition-delay: 0.6s;
+}
+#nav-main.is-open ul li:nth-child(4) {
+  transition-delay: 0.68s;
+}
+#nav-main.is-open ul li:nth-child(5) {
+  transition-delay: 0.76s;
+}
+#nav-main.is-open .nav-main-utils {
+  transition-delay: 0.88s;
+}
+#nav-main.is-open .nav-main-utils .nav-socials {
+  transition-delay: 0.96s;
+}
 header {
+  padding-block: var(--header-padding);
+  z-index: 100;
   position: sticky;
   top: 0;
 }
@@ -119,15 +229,15 @@ header .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: var(--grid-gutter);
 }
 header .header-inner .logo-svg {
   height: var(--step-3);
   fill: var(--primary-color);
+  transition: 0.25s ease;
 }
-header .header-inner nav ul {
-  display: none;
-  gap: var(--space-l);
+header .header-inner:has(.nav-toggle[aria-expanded=true]) .logo-svg {
+  fill: var(--accent-color);
+  transition-delay: 0.25s;
 }
 header .header-inner .header-util {
   display: flex;
@@ -142,7 +252,8 @@ header .header-inner .header-util .nav-toggle {
   display: grid;
   place-items: center;
   border: 0;
-  background: 0;
+  border-radius: 50%;
+  background-color: var(--primary-color);
   cursor: pointer;
 }
 @media (width > 768px) {
@@ -152,7 +263,7 @@ header .header-inner .header-util .nav-toggle {
 }
 header .header-inner .header-util .nav-toggle svg {
   grid-area: 1 / 1;
-  stroke: var(--off-black);
+  stroke: var(--off-white);
   transition: opacity 0.25s cubic-bezier(0.65, 0, 0.35, 1), transform 0.25s cubic-bezier(0.65, 0, 0.35, 1);
   will-change: transform, opacity;
 }

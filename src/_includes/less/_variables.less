@@ -43,14 +43,23 @@
 
     // Utility Scales
     --touch-target: 44px;
+    --touch-target-sm: 32px;
+
+    // Header Scales
+    --header-padding: var(--grid-gutter);
+    --header-content-height: max(var(--step-3), var(--touch-target));
+    --header-height: calc((var(--header-padding) * 2) + var(--header-content-height));
 
     // Color Palette
-    --primary-color: #e0001a;
-    --secondary-color:#a30013;
+    --primary-color: #a30013;
+    --secondary-color:#e0001a;
     --accent-color:#ffb71c;
     --off-white:#fff6ea;
     --off-black:#212120;
     --light-off-black:#3c3c3c;
+
+    // Animation Variables
+    --anim-cubic: cubic-bezier(0.65, 0, 0.35, 1);
 }
 // Grid utilities
 .u-container {
@@ -61,4 +70,17 @@
 .u-grid {
   display: grid;
   gap: var(--grid-gutter);
+}
+
+// Animation Presets
+.anim-fadeup {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: .25s ease;
+}
+body:has(.nav-toggle[aria-expanded=true]) {
+  .anim-fadeup {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
