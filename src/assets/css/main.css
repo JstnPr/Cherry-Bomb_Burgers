@@ -128,6 +128,10 @@ body:has(.nav-toggle[aria-expanded=true]) .anim-fadeup {
 :has(.nav-toggle[aria-expanded=true]) {
   overflow: hidden;
 }
+*:focus-visible {
+  outline: 2px var(--accent-color) solid;
+  outline-offset: 5px;
+}
 #nav-main {
   inset: 0;
   padding-top: var(--header-height);
@@ -191,6 +195,7 @@ body:has(.nav-toggle[aria-expanded=true]) .anim-fadeup {
   height: var(--touch-target-sm);
   display: grid;
   place-items: center;
+  border-radius: 50%;
 }
 #nav-main.is-open {
   visibility: visible;
@@ -243,7 +248,7 @@ header .header-inner .logo-svg {
 }
 header .header-inner:has(.nav-toggle[aria-expanded=true]) .logo-svg {
   fill: var(--accent-color);
-  transition-delay: 0.25s;
+  transition-delay: 0.35s;
 }
 header .header-inner .header-util {
   display: flex;

@@ -3,6 +3,12 @@
 // Disable scrolling on nav-menu open
 &:has(.nav-toggle[aria-expanded=true]) { overflow: hidden; }
 
+// Tab Focus Color
+*:focus-visible {
+    outline: 2px var(--accent-color) solid;
+    outline-offset: 5px;
+}
+
 // Full-Screen Navigation
 #nav-main {
     // Box Model
@@ -83,6 +89,8 @@
                 // Display
                 display: grid;
                 place-items: center;
+                // Styling
+                border-radius: 50%;
             }
         }
     }
@@ -137,7 +145,7 @@ header {
         }
         &:has(.nav-toggle[aria-expanded=true]) .logo-svg {
             fill: var(--accent-color);
-            transition-delay: .25s;
+            transition-delay: .35s;
         }
 
         .header-util {
