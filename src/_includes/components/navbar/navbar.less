@@ -1,10 +1,11 @@
 // out: false, main: ../../less/main.less
 
 // Disable scrolling on nav-menu open
-&:has(.nav-toggle[aria-expanded=true]) { overflow: hidden; }
+html { scrollbar-gutter: stable; }
+body:has(.nav-toggle[aria-expanded=true]) { overflow: hidden; }
 
 // Tab Focus Color
-*:focus-visible {
+:focus-visible {
     outline: 2px var(--accent-color) solid;
     outline-offset: 5px;
 }
@@ -26,7 +27,7 @@
     z-index: 90;
     position: fixed;
     // Behavior
-    transition: visibility 0s var(--anim-cubic) 0.8s;
+    transition: visibility 0s var(--anim-nav-duration);
     
     // Expansion Opening Styles
     &:before {
@@ -44,7 +45,7 @@
         background-color: var(--primary-color);
         // Behavior
         transform: translate(-50%, -50%) scale(0);
-        transition: 0.8s var(--anim-cubic);
+        transition: transform var(--anim-nav-duration) var(--anim-cubic);
         will-change: transform;
     }
 
@@ -78,7 +79,6 @@
         .nav-socials {
             // Display
             display: flex;
-            flex-direction: row;
             align-items: center;
             gap: var(--space-2xs);
 
@@ -100,7 +100,7 @@
         // Behavior
         transition-delay: 0s;
 
-        &::before {
+        &:before {
             transform: translate(-50%, -50%) scale(1);
         }
         ul li {
@@ -133,11 +133,11 @@ header {
 
         .logo-svg {
             // Box Model
-            height: var(--step-6);
+            height: var(--logo-height);
             // Styling
             fill: var(--primary-color);
             // Behavior
-            transition: .25s ease;
+            transition: fill .25s ease;
 
             @media (width > 768px) {
                 height: var(--step-4);
@@ -176,8 +176,8 @@ header {
                     stroke: var(--off-white);
                     // Behavior
                     transition:
-                        opacity 0.25s cubic-bezier(0.65, 0, 0.35, 1),
-                        transform 0.25s cubic-bezier(0.65, 0, 0.35, 1);
+                        opacity 0.25s var(--anim-cubic),
+                        transform 0.25s var(--anim-cubic);
                     will-change: transform, opacity;
                 }
                 // Animations
@@ -185,13 +185,9 @@ header {
                     opacity: 0;
                     transform: rotate(-90deg);
                 }
-                &[aria-expanded=true] .nav-toggle-close {
-                    opacity: 1;
-                    transform: rotate(0deg);
-                }
-                &[aria-expanded=true] .nav-toggle-open {
-                    opacity: 0;
-                    transform: rotate(90deg);
+                &[aria-expanded=true] {
+                    .nav-toggle-close { opacity: 1; transform: rotate(90deg); }
+                    .nav-toggle-open { opacity: 0; transform: rotate(90deg); }
                 }
             }
         }

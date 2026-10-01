@@ -46,8 +46,11 @@
     --touch-target-sm: 32px;
 
     // Header Scales
+    --logo-height: var(--step-6);
+    @media (width > 768px) { --logo-height: var(--step-4);}
+
     --header-padding: var(--grid-gutter);
-    --header-content-height: max(var(--step-3), var(--touch-target));
+    --header-content-height: max(var(--logo-height), var(--touch-target));
     --header-height: calc((var(--header-padding) * 2) + var(--header-content-height));
 
     // Color Palette
@@ -60,6 +63,7 @@
 
     // Animation Variables
     --anim-cubic: cubic-bezier(0.65, 0, 0.35, 1);
+    --anim-nav-duration: .8s;
 }
 // Grid utilities
 .u-container {
@@ -73,13 +77,13 @@
 }
 
 // Animation Presets
-.anim-fadeup {
+#nav-main .anim-fadeup {
   opacity: 0;
   transform: translateY(20px);
-  transition: .25s ease;
+  transition: opacity, transform .25s ease;
 }
 body:has(.nav-toggle[aria-expanded=true]) {
-  .anim-fadeup {
+  #nav-main .anim-fadeup {
     opacity: 1;
     transform: translateY(0);
   }

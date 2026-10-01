@@ -19,7 +19,6 @@ navToggle.addEventListener('click', () => {
 // Exit on Link Click
 navMenu.addEventListener('click', (e) => {
     if (e.target.closest('a')) navToggle.click();
-    else return;
 })
 
 // Tab Fencing Logic
@@ -29,7 +28,7 @@ document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape' && e.key !== 'Tab') return;
 
     // Escape Key to close the menu
-    if (e.key === 'Escape') { navToggle.click(); navToggle.focus(); return; }
+    if (e.key === 'Escape') { navToggle.click(); return; }
 
     // Define Focus-Trap Variables
     const navItems = navMenu.querySelectorAll('a');
